@@ -1,0 +1,65 @@
+[data-control="cog"] {
+  display: none;
+}
+[data-control="cog"] a {
+  padding: 0 3px;
+  color: #000;
+  /*&:hover {
+			display: inline-block;
+			background-color: #000;
+			color: #fff;
+		}*/
+}
+.theme-switcher {
+  position: relative;
+  background: #fff;
+  padding: 20px 20px 15px 20px;
+  max-width: 400px;
+  z-index: 1000;
+}
+.theme-switcher h3 {
+  margin: 0 0 10px 0;
+}
+.theme-switcher.fixed {
+  position: fixed;
+  top: 150px;
+  right: -320px;
+  z-index: 1000;
+  background: #fff;
+  width: 320px;
+  transition: right .3s;
+}
+.theme-switcher.fixed:hover {
+  right: 0;
+}
+.theme-switcher.fixed:before {
+  content: "\f013";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -53px;
+  background: #fff;
+  color: #000;
+  font-family: 'FontAwesome';
+  font-size: 40px;
+  padding: 0 10px;
+}
+.theme-switcher [data-pick],
+.theme-switcher [data-switch],
+.theme-switcher [data-nav] {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  border: 3px #eee solid;
+}
+.theme-switcher [data-pick]:hover,
+.theme-switcher [data-switch]:hover,
+.theme-switcher [data-nav]:hover {
+  border: 3px #000 solid;
+}
+.theme-switcher [data-pick] span,
+.theme-switcher [data-switch] span,
+.theme-switcher [data-nav] span {
+  display: none;
+}

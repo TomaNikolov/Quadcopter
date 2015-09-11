@@ -1,0 +1,17 @@
+{
+  "name": "www",
+  "version": "0.0.1",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "handlebars": "~4.0.2",
+    "jquery": "~2.1.4",
+    "sammy": "~0.7.6"
+  }
+}
