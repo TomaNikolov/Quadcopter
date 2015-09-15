@@ -1,12 +1,15 @@
+'use stric'
+
 var express = require('express');
+
 var app = express();
+var env = process.env.NODE_ENV || 'development';
+var config = require ('./config/config')[env];
 
-app.use(express.static('public'));
+require('./config/express')(app);
+require('./config/mongoose')(config);
+require('./config/routes')(app);
 
-app.get('/api/user', function(req, res){
-  res.send('Toma');
-});
-
- app.listen(3000, function(){
-  console.log('server is running at port 3000');
+ app.listen(config.port, function(){
+  console.log('server is running at port ' + config.port);
 });

@@ -24,10 +24,11 @@
                             <div class="service-name"><h3></h3>
 
                                 <p></p>
-                                <button class="btn btn-service">View</button>
+                                <a class="btn btn-service" href="contents/img/placeholder-annency-rect.jpg" rel="prettyPhoto">View</a>
                             </div>
                         </div>
-                        <img class="round" src="contents/img/placeholder-annency-rect.jpg" alt="...">
+                      <img src="contents/img/placeholder-annency-rect.jpg"  alt="Nice building" /></a>
+                        <!-- <img class="round" src="contents/img/placeholder-annency-rect.jpg" alt="..."> -->
                     </div>
                 </div>
             </div>
@@ -99,8 +100,23 @@
 <!-- Component: portfolio/portfolio-alt1.html - START -->
 <section class="">
     <div class="container">
-        <h1><span>Portfolio alternative</span></h1>
-        <!-- TODO: here will be the video -->
+        <h1><span>Видео</span></h1>
+        <div class="row">
+            {{#each this.video}}
+          <div class="col-sm-6 col-md-4">
+              <div class="info-thumbnail-link">
+                  <div class="thumbnail info-thumbnail background-clouds color-text">
+                      <div class="service">
+                          <div class="service-name">
+                              <button class="btn btn-service video" data-id="{{name}}">Гледай</button>
+                          </div>
+                      </div>
+                      <img class="round" src="http://img.youtube.com/vi/{{name}}/0.jpg" alt="...">
+                  </div>
+              </div>
+          </div>
+            {{/each}}
+        <!-- another video  -->
             </div>
 </section>
 <!-- Component: portfolio/portfolio-alt1.html - END -->

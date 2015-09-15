@@ -24,6 +24,9 @@ var sammy = Sammy('#content', function() {
     aboutusController.init(context)
   });
 
+  this.get('#/video',youtubeController.init);
+
+
   this.get('', function() {
     console.log(all)
    });

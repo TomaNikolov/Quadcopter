@@ -6,6 +6,9 @@ var homeController = (function () {
     .then(function(template){
       context.$element()
       .html(template());
+    })
+    .then(function(){
+    $('[data-spy="responsive-slider"]').responsiveSlider();
     });
   }
 
