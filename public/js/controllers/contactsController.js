@@ -1,15 +1,15 @@
 var contactsController = (function () {
-  function init(context) {
+    function init(context) {
 
-    templateGenerator
-    .get('contacts')
-    .then(function(template){
-      context.$element()
-      .html(template());
-    });
-  }
+        templateGenerator
+            .get('contacts')
+            .then(function (template) {
+                context.$element()
+                    .html(template());
+            });
+    }
 
-  return {
-    init: init
-  };
+    return {
+        init: init
+    };
 }());

@@ -1,18 +1,18 @@
 var setUpController = (function () {
-  function init(context) {
+    function init(context) {
 
-    data.user.setUp()
-    .then(function(template){
-    //  console.log(template);
-      context.$element()
-      .html(template);
-    })
-    .catch(function(err){
-      
-    });
-  }
+        data.user.setUp()
+            .then(function (template) {
+                //  console.log(template);
+                context.$element()
+                    .html(template);
+            })
+            .catch(function (err) {
 
-  return {
-    init: init
-  };
+            });
+    }
+
+    return {
+        init: init
+    };
 }());

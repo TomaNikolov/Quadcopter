@@ -13,7 +13,6 @@ var data = (function () {
 
         return jsonRequester.put(url, options)
             .then(function (res) {
-              console.log(res)
                 var user = res.user;
                 identity.setToken(user.accessToken);
                 identity.setUserName(user.username);
@@ -33,7 +32,7 @@ var data = (function () {
 
         return jsonRequester.post(url, options)
             .then(function (resp) {
-              console.log(resp);
+                console.log(resp);
                 var user = resp.result;
                 return user;
             });
@@ -50,45 +49,19 @@ var data = (function () {
         return promise
     }
 
-    function setUp(){
+    function setUp() {
         var url = 'api/admin'
         var options = {
             headers: {
                 'x-auth-key': identity.getToken()
-          }
+            }
         };
 
         return jsonRequester.get(url, options)
-        .then(function(resp){
-          return resp;
-      });
+            .then(function (resp) {
+                return resp;
+            });
     }
-
-    // /*cookies*/
-    // function getAllCookies() {
-    //     var url = 'api/cookies';
-    //     return jsonRequester.get(url)
-    //         .then(function (resp) {
-    //             var cookie = resp.result;
-    //             return cookie
-    //         });
-    // }
-    //
-    // function shareCookie(cookie) {
-    //     var url = 'api/cookies';
-    //     var options = {
-    //         data: cookie,
-    //         headers: {
-    //             'x-auth-key': identity.getToken()
-    //         }
-    //     };
-    //     return jsonRequester
-    //         .post(url, options)
-    //         .then(function (resp) {
-    //             var cookie = resp.result;
-    //             return cookie;
-    //         });
-    // }
 
     /*Video*/
     function getVideos() {
@@ -120,8 +93,8 @@ var data = (function () {
         video: {
             get: getVideos
         },
-        image :{
-          get : getImages
+        image: {
+            get: getImages
         }
     };
 })();
