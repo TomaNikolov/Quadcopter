@@ -26,8 +26,10 @@ module.exports = {
     return promise;
   },
   findByUserName: function(username){
+
     var promise = new Promise (function(resolve, reject){
       User.findOne({username: username}).exec(function(err, dbUser){
+
         if(err){
           reject(err);
         }

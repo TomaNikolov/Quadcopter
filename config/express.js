@@ -2,10 +2,13 @@
 
 var express = require('express');
 var bodyParser = require('body-parser');
+var busboy = require('connect-busboy');
 
 module.exports = function(app) {
 
-  app.use(bodyParser.urlencoded({extended:true}))
+  app.use(busboy());
+
+  app.use(bodyParser.urlencoded({extended:true}));
 
   app.use(bodyParser.json());
 

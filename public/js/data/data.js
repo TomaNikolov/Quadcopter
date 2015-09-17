@@ -2,26 +2,27 @@ var data = (function () {
 
     /*users*/
     function login(user) {
-        var url = 'api/auth';
+        var url = 'api/login';
         var reqUser = {
             username: user.username,
-            passHash: CryptoJS.SHA1(user.password).toString()
+            password: CryptoJS.SHA1(user.password).toString()
         };
         var options = {
             data: reqUser
         };
 
         return jsonRequester.put(url, options)
-            .then(function (resp) {
-                var user = resp.result;
-                identity.setToken(user.authKey);
+            .then(function (res) {
+              console.log(res)
+                var user = res.user;
+                identity.setToken(user.accessToken);
                 identity.setUserName(user.username);
                 return user;
             });
     }
 
     function register(user) {
-        var url = 'api/users';
+        var url = 'api/register';
         var reqUser = {
             username: user.username,
             password: CryptoJS.SHA1(user.password).toString()
@@ -49,32 +50,47 @@ var data = (function () {
         return promise
     }
 
-    /*cookies*/
-    function getAllCookies() {
-        var url = 'api/cookies';
-        return jsonRequester.get(url)
-            .then(function (resp) {
-                var cookie = resp.result;
-                return cookie
-            });
-    }
-
-    function shareCookie(cookie) {
-        var url = 'api/cookies';
+    function setUp(){
+        var url = 'api/admin'
         var options = {
-            data: cookie,
             headers: {
                 'x-auth-key': identity.getToken()
-            }
+          }
         };
-        return jsonRequester
-            .post(url, options)
-            .then(function (resp) {
-                var cookie = resp.result;
-                return cookie;
-            });
+
+        return jsonRequester.get(url, options)
+        .then(function(resp){
+          return resp;
+      });
     }
 
+    // /*cookies*/
+    // function getAllCookies() {
+    //     var url = 'api/cookies';
+    //     return jsonRequester.get(url)
+    //         .then(function (resp) {
+    //             var cookie = resp.result;
+    //             return cookie
+    //         });
+    // }
+    //
+    // function shareCookie(cookie) {
+    //     var url = 'api/cookies';
+    //     var options = {
+    //         data: cookie,
+    //         headers: {
+    //             'x-auth-key': identity.getToken()
+    //         }
+    //     };
+    //     return jsonRequester
+    //         .post(url, options)
+    //         .then(function (resp) {
+    //             var cookie = resp.result;
+    //             return cookie;
+    //         });
+    // }
+
+    /*Video*/
     function getVideos() {
         var url = 'api/video';
         return jsonRequester.get(url)
@@ -84,14 +100,28 @@ var data = (function () {
             });
     }
 
+    /*image*/
+    function getImages() {
+        var url = 'api/image';
+        return jsonRequester.get(url)
+            .then(function (resp) {
+                var images = resp.images;
+                return images;
+            });
+    }
+
     return {
         user: {
             login: login,
             register: register,
-            logout: logout
+            logout: logout,
+            setUp: setUp
         },
         video: {
             get: getVideos
+        },
+        image :{
+          get : getImages
         }
     };
 })();

@@ -8,5 +8,4 @@ module.exports = {
   UserModel : User,
     VideoModel: Video,
   ImageModel : Image
-
 }

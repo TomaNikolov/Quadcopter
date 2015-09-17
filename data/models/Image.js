@@ -4,8 +4,9 @@ var mongoose = require('mongoose');
 
 module.exports.init = function () {
   var imageSchema = mongoose.Schema({
-    name : {type : String, required : true},
-    sortNumber : {type : Number}
+    fileName : {type : String, required : true, unique : true},
+    title : {type : String},
+    date: {type : String}
   });
 
   mongoose.model('Image', imageSchema);

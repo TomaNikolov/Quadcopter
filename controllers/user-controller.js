@@ -6,7 +6,6 @@ module.exports = {
   create : function(req, res){
     var user = req.body;
 
-console.log(req.body);
     if(!user.username){
       res
       .status(401)

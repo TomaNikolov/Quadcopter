@@ -5,5 +5,9 @@ var homeController = (function () {
       password : $('#tb-pass').val()
     };
 console.log(user);
+      data.user.login(user)
+      .then(function(user){
+        console.log(user);
+      })
   });
 }());

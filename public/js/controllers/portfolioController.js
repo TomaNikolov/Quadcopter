@@ -10,6 +10,12 @@ context = routeContext;
     gallery.video = resVideos;
   })
   .then(function(){
+    return data.image.get();
+  })
+  .then(function(resImages){
+    gallery.images = resImages;
+  })
+  .then(function(){
   return    templateGenerator
     .get('portfolio')
   })
