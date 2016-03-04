@@ -49,18 +49,6 @@
         var PARTIALS_PREFIX = 'views/partials/';
         var CONTROLLER_AS_VIEW_MODEL = 'vm';
 
-        //var routeResolvers = {
-        //    authenticationRequired: {
-        //        authenticate: ['$q', 'identity', function ($q, ) {
-        //            if (identity.isAuthenticated()) {
-        //                return true;
-        //            }
-        //
-        //            return $q.reject('not authorized');
-        //        }]
-        //    }
-        //};
-
         $routeProvider
             .when('/', {
                 templateUrl: PARTIALS_PREFIX + 'home/home.html',
@@ -75,37 +63,26 @@
             .when('/portfolio', {
                 templateUrl: PARTIALS_PREFIX + 'portfolio/portfolio.html',
                 controller: 'PortfolioController',
-                controllerAs: CONTROLLER_AS_VIEW_MODEL,
-               // resolve: routeResolvers.authenticationRequired
+                controllerAs: CONTROLLER_AS_VIEW_MODEL
             })
             .when('/aboutus', {
                 templateUrl: PARTIALS_PREFIX + 'aboutus/aboutus.html',
                 controller: 'AboutUsController',
-                controllerAs: CONTROLLER_AS_VIEW_MODEL,
-              //  resolve: routeResolvers.authenticationRequired
+                controllerAs: CONTROLLER_AS_VIEW_MODEL
             })
             .when('/video/:id', {
                 templateUrl: PARTIALS_PREFIX + 'portfolio/video.html',
                 controller: 'YoutubeController',
-                controllerAs: CONTROLLER_AS_VIEW_MODEL,
+                controllerAs: CONTROLLER_AS_VIEW_MODEL
                 //  resolve: routeResolvers.authenticationRequired
             })
             .otherwise({ redirectTo: '/' });
     }
 
-    function run($rootScope, $location) {
-        //$rootScope.$on('$routeChangeError', function (ev, current, previous, rejection) {
-        //    if (rejection === 'not authorized') {
-        //        $location.path('/unauthorized');
-        //    }
-        //});
-    }
-
-   // angular.module('quadCopter.services', []);
+    angular.module('quadCopter.services', []);
   //  angular.module('quadCopter.directives', []);
   //  angular.module('quadCopter.filters', []);
-    angular.module('quadCopter.controllers', []);
+    angular.module('quadCopter.controllers', ['quadCopter.services']);
     angular.module('quadCopter', ['ngRoute', 'quadCopter.controllers']).
-        config(['$routeProvider', config])
-        .run([ '$rootScope', '$location', run]) ;
+        config(['$routeProvider', config]);
 }());
