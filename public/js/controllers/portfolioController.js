@@ -43,3 +43,15 @@ var portfolioController = (function () {
         init: init
     };
 }());
+
+(function () {
+    'use strict';
+
+    function PortfolioController() {
+        var vm = this;
+
+    }
+
+    angular.module('quadCopter.controllers')
+        .controller('PortfolioController', [ PortfolioController])
+}());

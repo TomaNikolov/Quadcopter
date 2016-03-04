@@ -25,7 +25,7 @@
       <script src="js/respond.min.js"></script>
     <![endif]-->
   </head>
-  <body class="background-clouds">
+  <body ng-app="quadCopter" ng-cloak class="background-clouds">
     <div id="nav-wrapper" class="background-midnight-blue color-white">
       <nav id="mainMenu" class="navbar navbar-fixed-top" role="navigation">
         <div class="container">
@@ -94,7 +94,7 @@
 
     </div>
 <!-- Main Content -->
-<div id="content"></div>
+<div ng-view id="content"></div>
 
     <footer class="background-midnight-blue color-white" data-control="class">
       <div class="container">
@@ -180,13 +180,16 @@
     </script> -->
     <!-- Libs -->
     <script type="text/javascript" src="bower_components/jquery/dist/jquery.js"></script>
-    <script type="text/javascript" src="bower_components/handlebars/handlebars.js"></script>
-    <script type="text/javascript" src="bower_components/sammy/lib/sammy.js"></script>
+    <script type="text/javascript" src="bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="bower_components/angular-route/angular-route.js"></script>
+    <script type="text/javascript" src="bower_components/angular-cookie/angular-cookie.js"></script>
     <script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script type="text/javascript" src="contents/js/responsive-slider.js"></script>
     <script type="text/javascript" src="bower_components/prettyphoto/js/jquery.prettyPhoto.js"></script>
     <script type="text/javascript" src="bower_components/sha1/index.js"></script>
 
+    <!-- App Start  -->
+    <script type="text/javascript" src="app.js"></script>
           <!-- Utils -->
     <script type="text/javascript" src="/js/utils/templateGenerator.js"></script>
     <script type="text/javascript" src="/js/utils/identity.js"></script>
@@ -194,15 +197,14 @@
     <script type="text/javascript" src="/js/data/data.js"></script>
 
     <!-- Controllers -->
-  <script type="text/javascript" src="/js/controllers/homeController.js"></script>
-  <script type="text/javascript" src="js/controllers/contactsController.js">  </script>
+  <script type="text/javascript" src="js/controllers/home-controller.js"></script>
+  <script type="text/javascript" src="js/controllers/contacts-controller.js">  </script>
   <script type="text/javascript" src="js/controllers/portfolioController.js">  </script>
-  <script type="text/javascript" src="js/controllers/aboutusController.js">  </script>
-  <script type="text/javascript" src="js/controllers/youtubeController.js">  </script>
+  <script type="text/javascript" src="js/controllers/about-us-controller.js">  </script>
+  <script type="text/javascript" src="js/controllers/youtube-controller.js">  </script>
   <script type="text/javascript" src="js/controllers/userController.js">  </script>
   <script type="text/javascript" src="js/controllers/setupController.js">  </script>
 
-    <!-- App Start  -->
-    <script type="text/javascript" src="app.js"></script>
+
   </body>
 </html>

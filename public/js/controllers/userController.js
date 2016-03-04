@@ -1,4 +1,4 @@
-var homeController = (function () {
+var usersController = (function () {
     $('#btn-login').on('click', function () {
         var user = {
             username: $('#tb-username').val(),
