@@ -8,5 +8,7 @@
     <orderEntry type="library" name="node-DefinitelyTyped" level="application" />
     <orderEntry type="library" name="Quadcopter node_modules" level="project" />
     <orderEntry type="library" name="Quadcopter node_modules" level="project" />
+    <orderEntry type="library" name="angular-agility-DefinitelyTyped" level="application" />
+    <orderEntry type="library" name="angularjs-DefinitelyTyped" level="application" />
   </component>
 </module>

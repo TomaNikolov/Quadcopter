@@ -2,16 +2,16 @@
 (function () {
     'use strict';
 
-    function YoutubeController($routeParams) {
+    function YoutubeController($routeParams, $sce) {
         var vm = this;
-        console.log($routeParams.id);
-        vm.id = $routeParams.id;
+        var id = $routeParams.id;
 
-        vm.getIframeSrc = function(id){
-            return "https://www.youtube.com/embed/u3B0lRzlWGg" ;
+        vm.getUrl = function(){
+            var url = "https://www.youtube.com/embed/" + id;
+            return  $sce.trustAsResourceUrl(url);
         }
     }
 
     angular.module('quadCopter.controllers')
-        .controller('YoutubeController', ['$routeParams', YoutubeController])
+        .controller('YoutubeController', ['$routeParams', '$sce', YoutubeController])
 }());
