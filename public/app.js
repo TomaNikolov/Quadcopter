@@ -76,13 +76,12 @@
                 controllerAs: CONTROLLER_AS_VIEW_MODEL
                 //  resolve: routeResolvers.authenticationRequired
             })
-            .otherwise({ redirectTo: '/' });
+            .otherwise({redirectTo: '/'});
     }
 
     angular.module('quadCopter.services', []);
-  //  angular.module('quadCopter.directives', []);
-  //  angular.module('quadCopter.filters', []);
+    angular.module('quadCopter.directives', []);
     angular.module('quadCopter.controllers', ['quadCopter.services']);
-    angular.module('quadCopter', ['ngRoute', 'quadCopter.controllers']).
-        config(['$routeProvider', config]);
+    angular.module('quadCopter', ['ngRoute', 'quadCopter.controllers', 'quadCopter.directives'])
+        .config(['$routeProvider', config]);
 }());
