@@ -1,0 +1,46 @@
+<!-- Breadcrumbs - START -->
+<div class="breadcrumbs-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">Portfolio</li>
+            <li class="active">Portfolio Item</li>
+        </ol>
+    </div>
+</div>
+<!-- Breadcrumbs - END -->
+
+<!-- Component: portfolio/portfolio.html - START -->
+<section class="">
+    <div class="container">
+        <h1><span>Portfolio</span></h1>
+
+        <div class="row">
+          <div pretty images="vm.images"></div>
+        </div>
+</section>
+<!-- Component: portfolio/portfolio.html - END -->
+
+<!-- Component: portfolio/portfolio-alt1.html - START -->
+<section class="">
+    <div class="container">
+        <h1><span>Видео</span></h1>
+        <div class="row">
+            <div ng-repeat="video in vm.videos">
+                <div class="col-sm-6 col-md-4">
+                    <div class="info-thumbnail-link">
+                        <div class="thumbnail info-thumbnail background-clouds color-text">
+                            <div class="service">
+                                <div class="service-name">
+                                    <a class="btn btn-service video" href="#/video/{{video.name}}">Гледай</a>
+                                </div>
+                            </div>
+                            <img class="round" src="http://img.youtube.com/vi/{{video.name}}/0.jpg" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- another video  -->
+        </div>
+</section>
+<!-- Component: portfolio/portfolio-alt1.html - END -->

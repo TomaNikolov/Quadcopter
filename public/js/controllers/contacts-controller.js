@@ -1,10 +1,10 @@
 (function () {
     'use strict';
 
-    function HomeController() {
+    function ContactsController() {
         var vm = this;
     }
 
     angular.module('quadCopter.controllers')
-        .controller('HomeController', [ HomeController])
+        .controller('ContactsController', [ ContactsController])
 }());
