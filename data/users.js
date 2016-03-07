@@ -1,11 +1,26 @@
-'use stric'
-
 var User = require('mongoose').model('User');
 var Promise = require('bluebird');
+var encryption = require('../utils/encryption')
+
+'use strict';
 
 module.exports = {
     create: function (user) {
         var promise = new Promise(function (resolve, reject) {
+
+            if (!user.username) {
+                reject('Username is required')
+            }
+
+            if (!user.password) {
+
+                reject('Password is required')
+            }
+
+            user.accessToken = '';
+            user.salt = encryption.generateSalt();
+            user.hashPass = encryption.generateHashedPassword(user.salt, user.password);
+
             User.create(user, function (err, dbUser) {
                 if (err) {
                     if (err.code === 11000) {
