@@ -1,6 +1,6 @@
 var User = require('mongoose').model('User');
 var Promise = require('bluebird');
-var encryption = require('../utils/encryption')
+var encryption = require('../utils/encryption');
 
 'use strict';
 
@@ -41,7 +41,6 @@ module.exports = {
         return promise;
     },
     findByUserName: function (username) {
-
         var promise = new Promise(function (resolve, reject) {
             User.findOne({username: username}).exec(function (err, dbUser) {
 

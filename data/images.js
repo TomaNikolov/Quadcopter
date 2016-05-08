@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 var Image = require('mongoose').model('Image');
 var Promise = require('bluebird');
