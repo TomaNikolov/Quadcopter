@@ -11,4 +11,6 @@ module.exports = function (app) {
     app.get('/api/admin', controllers.auth.authenticate, controllers.auth.adminAuth, controllers.admin.init);
     app.get('/api/video', controllers.videos.getAll);
     app.get('/api/image', controllers.image.getAll);
+    
+    app.get('/api/fileserver/:directory', controllers.fileServer.getFiles);
 };
