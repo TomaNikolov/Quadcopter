@@ -11,3 +11,13 @@ var usersController = (function () {
             })
     });
 }());
+(function () {
+    'use strict';
+
+    function UsersController() {
+        var vm = this;
+    }
+
+    angular.module('quadCopter.controllers')
+        .controller('UsersController', [ UsersController])
+}());

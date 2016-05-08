@@ -27,8 +27,8 @@ module.exports = {
             .findByUserName(user.username)
             .then(function (dbUser) {
                 console.log(dbUser);
-                if (!(dbUser.hasValidPassword(user.password))) {
-                    res.json({success: false, reason: 'Invalid Pasword'});
+                if (!(dbUser.authenticate(user.password))) {
+                    res.json({success: false, reason: 'Invalid Password'});
 
                     return;
                 }
@@ -60,12 +60,12 @@ module.exports = {
             .findByUserName(user.username)
             .then(function (dbUser) {
                 dbUser.accessToken = '';
-                dbuser.save();
-                res.json({succes: true});
+                dbUser.save();
+                res.json({success: true});
             })
             .catch(function (err) {
                 res.status(401)
-                    .json({succes: false, reason: err});
+                    .json({success: false, reason: err});
             })
     },
     authenticate: function (req, res, next) {
@@ -79,7 +79,7 @@ module.exports = {
             .catch(function (err) {
                 res
                     .status(401)
-                    .json({succes: false, reason: err});
+                    .json({success: false, reason: err});
             });
     },
     adminAuth: function (req, res, next) {
@@ -87,7 +87,7 @@ module.exports = {
 
         if (user.username !== 'admin') {
             res.status(401)
-                .json({succes: false, reason: 'Unauthorised!'});
+                .json({success: false, reason: 'Unauthorised!'});
 
             return;
         }

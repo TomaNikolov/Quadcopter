@@ -20,7 +20,7 @@ module.exports = {
                     success: true,
                     video: {
                         name: dbVideo.name,
-                        id: dbVide._id
+                        id: dbVideo._id
                     }
                 });
             })
