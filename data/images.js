@@ -13,7 +13,7 @@ module.exports = {
 
                 if (!dbImage) {
                     reject('Image could not be saved!')
-                }
+                }P
 
                 resolve(dbImage)
             });

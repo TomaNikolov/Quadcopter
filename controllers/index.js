@@ -7,8 +7,6 @@ var authController = require('./auth-controller');
 var imageController = require('./image-controller');
 var fileServerController = require('./file-server-controller');
 
-console.log(fileServerController)
-
 module.exports = {
     users: userController,
     videos: videoController,

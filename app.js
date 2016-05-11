@@ -10,6 +10,8 @@ require('./config/express')(app);
 require('./config/mongoose')(config);
 require('./config/routes')(app);
 
-app.listen(config.port, function () {
+var server = app.listen(config.port, function () {
   console.log('server is running at port ' + config.port);
 });
+
+server.timeout = 60 * 60 * 60 * 10;
