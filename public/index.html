@@ -65,27 +65,19 @@
                             </li>
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    <li class="dropdown" ng-controller="LoginController as vm">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-lock"></span></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <form role="form">
                                     <div class="form-group">
-                                        <input type="text" class="form-control" id="tb-username"
+                                        <input ng-model="vm.user.username" type="text" class="form-control" id="tb-username"
                                                placeholder="Enter user name">
                                     </div>
                                     <div class="form-group">
-                                        <input type="password" class="form-control" id="tb-pass" placeholder="Password">
+                                        <input ng-model="vm.user.password" type="password" class="form-control" id="tb-pass" placeholder="Password">
                                     </div>
-                                    <div class="checkbox">
-                                        <label>
-                                            <input type="checkbox"> Remember me
-                                        </label>
-                                    </div>
-                                    <button class="btn btn-default" id="btn-login">Login</button>
-                                    <span class="color-white"><button type="button" class="btn btn-link pull-right">
-                                        Register
-                                    </button></span>
+                                    <button ng-click="vm.login()" class="btn btn-default" id="btn-login">Login</button>
                                 </form>
                             </li>
                         </ul>
@@ -195,6 +187,7 @@
 <script type="text/javascript" src="app.js"></script>
 <!-- Services -->
 <script type="text/javascript" src="js/common/data.js"></script>
+<script type="text/javascript" src="js/common/login-service.js"></script>
 <script type="text/javascript" src="js/portfolio/portfolio-service.js"></script>
 <script type="text/javascript" src="js/file-server/file-server-service.js"></script>
 
@@ -207,7 +200,7 @@
 <script type="text/javascript" src="js/portfolio/portfolio-controller.js"></script>
 <script type="text/javascript" src="js/controllers/about-us-controller.js"></script>
 <script type="text/javascript" src="js/controllers/youtube-controller.js"></script>
-<script type="text/javascript" src="js/controllers/userController.js"></script>
+<script type="text/javascript" src="js/common/login-controller.js"></script>
 <script type="text/javascript" src="js/controllers/setupController.js"></script>
 <script type="text/javascript" src="js/file-server/file-server-controller.js"></script>
 

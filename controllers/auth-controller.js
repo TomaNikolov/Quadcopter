@@ -8,27 +8,24 @@ module.exports = {
         var user = req.body;
 
         if (!user.username) {
-            res
-                .status(401)
-                .json({success: false, reason: 'Username is reqired!'});
+            res.status(401)
+                .json({ success: false, reason: 'Username is reqired!' });
 
             return;
         }
 
         if (!user.password) {
-            res
-                .status(401)
-                .json({success: false, reason: 'Password is required!'});
+            res.status(401)
+                .json({ success: false, reason: 'Password is required!' });
 
             return;
         }
 
-        users
-            .findByUserName(user.username)
+        users.findByUserName(user.username)
             .then(function (dbUser) {
                 console.log(dbUser);
                 if (!(dbUser.authenticate(user.password))) {
-                    res.json({success: false, reason: 'Invalid Password'});
+                    res.json({ success: false, reason: 'Invalid Password' });
 
                     return;
                 }
@@ -48,24 +45,22 @@ module.exports = {
 
             })
             .catch(function (err) {
-                res
-                    .status(401)
-                    .json({success: false, reason: err});
+                res.status(401)
+                    .json({ success: false, reason: err });
             });
     },
     logout: function (req, res) {
         var user = req.user;
 
-        users
-            .findByUserName(user.username)
+        users.findByUserName(user.username)
             .then(function (dbUser) {
                 dbUser.accessToken = '';
                 dbUser.save();
-                res.json({success: true});
+                res.json({ success: true });
             })
             .catch(function (err) {
                 res.status(401)
-                    .json({success: false, reason: err});
+                    .json({ success: false, reason: err });
             })
     },
     authenticate: function (req, res, next) {
@@ -77,9 +72,8 @@ module.exports = {
                 next();
             })
             .catch(function (err) {
-                res
-                    .status(401)
-                    .json({success: false, reason: err});
+                res.status(401)
+                    .json({ success: false, reason: err });
             });
     },
     adminAuth: function (req, res, next) {
@@ -87,7 +81,7 @@ module.exports = {
 
         if (user.username !== 'admin') {
             res.status(401)
-                .json({success: false, reason: 'Unauthorised!'});
+                .json({ success: false, reason: 'Unauthorised!' });
 
             return;
         }
