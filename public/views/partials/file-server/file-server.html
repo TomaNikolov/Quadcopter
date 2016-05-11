@@ -1,0 +1,31 @@
+<!-- Breadcrumbs - START -->
+<div class="breadcrumbs-container">
+    <div class="container">
+        <ol class="breadcrumb">
+            <li><a href="index.html">Home</a></li>
+            <li class="active">File Server</li>
+        </ol>
+    </div>
+</div>
+<!-- Breadcrumbs - END -->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1><span>File Server</span></h1>
+                <div ng-repeat="file in vm.files">
+                    <div>
+                        <a href="api/fileserver/{{file}}"><i class="fa fa-download"> {{file}}</i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <a href="/api/fileserver/downloadAll" class="btn btn-success btn-block">Download all files</a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Component: contact/contact.html - START -->

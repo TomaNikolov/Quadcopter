@@ -32,6 +32,11 @@
                 controller: 'YoutubeController',
                 controllerAs: CONTROLLER_AS_VIEW_MODEL
             })
+            .when('/file-server', {
+                templateUrl: PARTIALS_PREFIX + 'file-server/file-server.html',
+                controller: 'FileServerController',
+                controllerAs: CONTROLLER_AS_VIEW_MODEL
+            })
             .otherwise({redirectTo: '/'});
     }
 
