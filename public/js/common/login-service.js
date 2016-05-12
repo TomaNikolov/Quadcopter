@@ -4,7 +4,7 @@
     function loginService(data) {
 
         function login(user) {
-            return data.put('login', user);
+            return data.post('login', user);
         }
 
         return {
