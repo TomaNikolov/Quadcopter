@@ -6,7 +6,7 @@ module.exports = {
     create: function (req, res) {
         var user = req.body;
 
-               users.create(user)
+        users.create(user)
             .then(function (dbUser) {
                 res.json({
                     success: true,
@@ -17,7 +17,17 @@ module.exports = {
                 });
             })
             .catch(function (err) {
-                res.json({success: false, reason: err});
+                res.json({ success: false, reason: err });
             });
+    },
+    isLoggedin: function (req, res){
+        var user = req.user;
+        
+       res.json({
+                    success: true,
+                    user: {
+                        username: user.username,
+                    }
+                });
     }
 };
