@@ -6,5 +6,5 @@
     }
 
     angular.module('quadCopter.controllers')
-        .controller('HomeController', [ HomeController])
+        .controller('HomeController2', [ HomeController])
 }());

@@ -6,6 +6,27 @@
         var PARTIALS_PREFIX = 'views/partials/';
         var CONTROLLER_AS_VIEW_MODEL = 'vm';
 
+        var checkLoggedin = function ($q, $timeout, $location, $rootScope, data) {
+            // Initialize a new promise 
+            var deferred = $q.defer();
+            // Make an AJAX call to check if the user is logged in
+            data.get('isLoggedin')
+                .then(function (resData) {
+                    // Authenticated 
+                    if (resData.user){
+                      deferred.resolve();  
+                    } 
+                    // Not Authenticated
+                    else {
+                        $rootScope.message = 'You need to log in.';
+                        deferred.reject();
+                        $location.url('/login');
+                    }
+                })
+
+            return deferred.promise;
+        };
+
         $routeProvider
             .when('/', {
                 templateUrl: PARTIALS_PREFIX + 'home/home.html',
@@ -35,9 +56,12 @@
             .when('/file-server', {
                 templateUrl: PARTIALS_PREFIX + 'file-server/file-server.html',
                 controller: 'FileServerController',
-                controllerAs: CONTROLLER_AS_VIEW_MODEL
+                controllerAs: CONTROLLER_AS_VIEW_MODEL,
+                resolve: {
+                    loggedin: checkLoggedin
+                }
             })
-            .otherwise({redirectTo: '/'});
+            .otherwise({ redirectTo: '/' });
     }
 
     angular.module('quadCopter.services', []);
@@ -45,4 +69,4 @@
     angular.module('quadCopter.controllers', ['quadCopter.services']);
     angular.module('quadCopter', ['ngRoute', 'quadCopter.controllers', 'quadCopter.directives'])
         .config(['$routeProvider', config]);
-}());
+} ());
