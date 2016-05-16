@@ -7,21 +7,23 @@
         var CONTROLLER_AS_VIEW_MODEL = 'vm';
 
         var checkLoggedin = function ($q, $timeout, $location, $rootScope, data) {
-            // Initialize a new promise 
             var deferred = $q.defer();
+
             // Make an AJAX call to check if the user is logged in
             data.get('isLoggedin')
                 .then(function (resData) {
-                    // Authenticated 
-                    if (resData.user){
-                      deferred.resolve();  
-                    } 
-                    // Not Authenticated
-                    else {
-                        $rootScope.message = 'You need to log in.';
-                        deferred.reject();
-                        $location.url('/login');
+                    if (resData.user) {
+                        deferred.resolve();
                     }
+                    else {
+                        deferred.reject();
+                        $location.url('/home');
+                        $rootScope.message = 'You need to log in.';
+                    }
+                })
+                .catch(function (err) {
+                    deferred.reject();
+                    $location.url('/home');
                 })
 
             return deferred.promise;

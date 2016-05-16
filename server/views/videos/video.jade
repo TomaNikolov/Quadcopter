@@ -1,0 +1,9 @@
+extends ../shared/layout
+block main-content
+    form(method="post")
+        label(for="username") Video Name
+        input(id="video-name" type="text" name="name" placeholder="video name" class ="form-control")
+
+        br
+
+        input(type="submit" value="Submit" class="btn btn-lg")

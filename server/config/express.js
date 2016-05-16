@@ -7,8 +7,11 @@ var session = require('express-session');
 var busboy = require('connect-busboy');
 var passport = require('passport');
 
-module.exports = function (app) {
+module.exports = function (app, config) {
 
+    app.set('view engine', 'jade');
+    app.set('views', config.rootPath + '/views');
+    
     app.use(cookieParser());
 
     app.use(bodyParser.json());

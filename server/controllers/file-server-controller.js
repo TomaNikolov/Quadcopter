@@ -1,6 +1,7 @@
 'use strict';
 
 var fileServer = require('../data/file-server');
+var CONSTANTS = require('../common/constants');
 
 var FILE_PATH = '../Quadcopter/file-server/';
 
@@ -30,7 +31,7 @@ module.exports = {
       var dirName = getDirName(req);
       var fileName = req.params.fileName;
       
-      res.download(FILE_PATH + dirName + '/' + fileName)
+      res.download(CONSTANTS.FILE_PATH + dirName + '/' + fileName)
   },
   
   downloadAll: function (req, res) {
@@ -38,8 +39,6 @@ module.exports = {
       
      fileServer.zipFile(dirName)
       .then(function (zipFilePath) {
-          console.log('-------------Download')
-          console.log(zipFilePath);
           res.download(zipFilePath, 'some.zip', function(err){
             //  fileServer.deleteZip(zipFilePath)
           });

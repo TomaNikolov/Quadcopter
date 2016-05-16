@@ -2,12 +2,11 @@
 var fs = require('fs');
 var Promise = require('bluebird');
 var archiver = require('archiver');
-
-var FILE_PATH = '../Quadcopter/file-server/';
+var CONSTANTS = require('../common/constants');
 
 module.exports = {
     getFile: function (dirName) {
-        var folderPath = FILE_PATH + dirName;
+        var folderPath = CONSTANTS.FILE_PATH + dirName;
         console.log(folderPath)
         return new Promise(function (resolve, reject) {
             fs.stat(folderPath, function (err) {
@@ -29,16 +28,13 @@ module.exports = {
     },
 
     zipFile: function (dirName) {
-        var folderPath = FILE_PATH + dirName;
+        var folderPath = CONSTANTS.FILE_PATH + dirName;
         return new Promise(function (resolve, reject) {
             var zipfileName = folderPath + '.zip';
             var output = fs.createWriteStream(zipfileName);
             var archive = archiver('zip');
 
             output.on('close', function () {
-                console.log(archive.pointer() + ' total bytes');
-                console.log('archiver has been finalized and the output file descriptor has closed.');
-
                 resolve(zipfileName);
             });
 
