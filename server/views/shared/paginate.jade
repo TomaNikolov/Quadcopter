@@ -1,0 +1,16 @@
+div.row
+    div.col-md-4.col-md-offset-4.text-center
+        if paginate.hasPreviousPages || paginate.hasNextPages
+            ul.pagination
+                if paginate.hasPreviousPages
+                    li
+                        a(href=paginate.previousPage)
+                            | &laquo;
+                if paginate.pages
+                    each page in paginate.pages
+                        li
+                            a(href=page.url)= page.number
+                if paginate.hasNextPages
+                    li
+                        a(href=paginate.nextPage)
+                            | &raquo;

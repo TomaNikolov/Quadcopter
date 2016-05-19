@@ -27,6 +27,8 @@ module.exports = function (app) {
      app.post('/images', controllers.image.create);
     app.get('/images', controllers.image.getImage);
     
+    app.get('/users', controllers.users.getUsers);
+    
     //app.get('/api/admin', auth.isAuthenticated, auth.isAdmin, controllers.admin.init);
     app.get('/api/admin', controllers.admin.init);
 };

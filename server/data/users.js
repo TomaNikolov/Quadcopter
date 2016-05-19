@@ -74,5 +74,23 @@ module.exports = {
         });
 
         return promise;
+    },
+    
+    getAll: function (params) {
+         var promise = new Promise(function (resolve, reject) {
+            User.find(function (err, dbUsers) {
+                if (err) {
+                    reject(err);
+                }
+
+                if (!dbUsers) {
+                    reject('There is no users!');
+                }
+
+                resolve(dbUsers);
+            });
+        });
+
+        return promise;
     }
 };

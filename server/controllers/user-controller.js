@@ -1,6 +1,7 @@
 'use strict';
 
 var users = require('../data/users');
+var paginate = require('../utils/paginate');
 
 module.exports = {
     create: function (req, res) {
@@ -20,14 +21,31 @@ module.exports = {
                 res.json({ success: false, reason: err });
             });
     },
-    isLoggedin: function (req, res){
+    isLoggedin: function (req, res) {
         var user = req.user;
-        
-       res.json({
-                    success: true,
-                    user: {
-                        username: user.username,
-                    }
-                });
+
+        res.json({
+            success: true,
+            user: {
+                username: user.username,
+            }
+        });
+    },
+
+    getUsers: function (req, res) {
+        var curentPage = req.query.page || 1;
+        var pageSize = 2;
+        console.log(curentPage)
+        users.getAll()
+            .then(function (resUsers) {
+                var pegination = paginate.getPaginate(curentPage, '/users', resUsers, pageSize);
+                var data = paginate.getPageData(resUsers, pageSize, curentPage);
+                
+                res.render('users/users',
+                    {
+                        users: data,
+                        paginate: pegination
+                    });
+            });
     }
 };
