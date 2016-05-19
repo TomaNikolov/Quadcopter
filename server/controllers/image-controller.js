@@ -12,9 +12,10 @@ module.exports = {
 
         req.busboy.on('file', function (fieldName, file, fileName) {
             uploadedFile.fileName = fileName;
+            console.log(uploadedFile.fileName)
             fileUpload.save(file, fileName)
                 .then(function (result) {
-                    //  console.log(result);
+                    console.log(result);
                 })
                 .catch(function (err) {
                     req.session.err = err;
@@ -23,6 +24,7 @@ module.exports = {
         });
 
         req.busboy.on('field', function (fieldname, val) {
+            console.log(val)
             uploadedFile.title = val;
             uploadedFile.date = dateHelper.getDate()
         });
