@@ -20,15 +20,21 @@ module.exports = function (app) {
     //Admin
     app.post('/videos', auth.isAuthenticated, auth.isAdmin, controllers.videos.create);
     app.get('/videos', auth.isAuthenticated, auth.isAdmin, controllers.videos.getVideo);
-    
+
     // app.post('/images', auth.isAuthenticated, auth.isAdmin, controllers.image.create);
     // app.get('/images', auth.isAuthenticated, auth.isAdmin, controllers.image.getImage);
-    
-     app.post('/images', controllers.image.create);
+
+    app.post('/images', controllers.image.create);
     app.get('/images', controllers.image.getImage);
-    
+
     app.get('/users', controllers.users.getUsers);
+
+    app.get('/files', controllers.fileServer.getView);
+
+    app.post('/getDirList', controllers.fileServer.getDirList);
     
+    app.post('/getFiles', controllers.fileServer.getCurrentDir);
+
     //app.get('/api/admin', auth.isAuthenticated, auth.isAdmin, controllers.admin.init);
     app.get('/api/admin', controllers.admin.init);
 };

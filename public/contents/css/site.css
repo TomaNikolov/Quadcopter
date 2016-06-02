@@ -1,0 +1,41 @@
+div .folder{
+     background: url(icons/folder.png) left top no-repeat;
+     height: 124px;
+     width: 130px;
+     }
+     
+div .file-name{
+    padding-left: 45px;
+}
+
+div .default{
+     background: url(icons/application-default-icon.png) left top no-repeat;
+     height: 124px;
+     width: 130px;
+     }
+     
+div .js{
+     background: url(icons/bash.png) left top no-repeat;
+     height: 124px;
+     width: 130px;
+     }
+     
+div .png{
+     background: url(icons/multimedia-photo-manager.png) left top no-repeat;
+     height: 124px;
+     width: 130px;
+     }
+    
+         
+div .jpg{
+     background: url(icons/multimedia-photo-manager.png) left top no-repeat;
+     height: 124px;
+     width: 130px;
+     }
+     
+     
+div .jpeg{
+     background: url(icons/multimedia-photo-manager.png) left top no-repeat;
+     height: 124px;
+     width: 130px;
+     }

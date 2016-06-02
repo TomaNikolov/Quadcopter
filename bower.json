@@ -16,6 +16,7 @@
     "sha1": "http://crypto-js.googlecode.com/svn/tags/3.1.2/build/rollups/sha1.js",
     "angular": "angularjs#~1.5.0",
     "angular-route": "~1.5.0",
-    "angular-cookie": "~4.1.0"
+    "angular-cookie": "~4.1.0",
+    "blueimp-file-upload": "https://github.com/blueimp/jQuery-File-Upload.git#~9.12.3"
   }
 }
