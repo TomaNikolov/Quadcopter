@@ -5,7 +5,7 @@ var controllers = require('../controllers'),
 
 module.exports = function (app) {
     //API
-    app.post('/api/register', controllers.users.create);
+    
     app.post('/api/login', auth.login);
     app.put('/api/logout', auth.logout);
     app.get('/api/isLoggedin', auth.isAuthenticated, controllers.users.isLoggedin);
@@ -28,7 +28,9 @@ module.exports = function (app) {
     app.get('/images', controllers.image.getImage);
 
     app.get('/users', controllers.users.getUsers);
-
+    app.get('/register', controllers.users.register);
+    app.post('/register', controllers.users.create);
+     
     app.get('/files', controllers.fileServer.getView);
 
     app.post('/getDirList', controllers.fileServer.getDirList);
@@ -36,5 +38,5 @@ module.exports = function (app) {
     app.post('/getFiles', controllers.fileServer.getCurrentDir);
 
     //app.get('/api/admin', auth.isAuthenticated, auth.isAdmin, controllers.admin.init);
-    app.get('/api/admin', controllers.admin.init);
+    app.get('/admin', controllers.admin.init);
 };

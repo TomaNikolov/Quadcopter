@@ -1,0 +1,11 @@
+extends ../shared/layout
+block main-content
+    form(method="post")
+        label(for="username") Username
+        input(id="username" type="text" name="name" placeholder="username" class ="form-control")
+        br
+        label(for="password") Password
+        input(id="password" type="text" name="password" placeholder="password" class ="form-control")
+        br
+
+        input(type="submit" value="Register" class="btn btn-primary btn-lg")

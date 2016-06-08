@@ -21,6 +21,11 @@ module.exports = {
                 res.json({ success: false, reason: err });
             });
     },
+    
+    register: function (req, res){
+        res.render("users/register");
+    },
+    
     isLoggedin: function (req, res) {
         var user = req.user;
 
@@ -34,7 +39,7 @@ module.exports = {
 
     getUsers: function (req, res) {
         var curentPage = req.query.page || 1;
-        var pageSize = 2;
+        var pageSize = 10;
         console.log(curentPage)
         users.getAll()
             .then(function (resUsers) {
