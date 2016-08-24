@@ -15,7 +15,7 @@ if (jQuery) (function ($) {
             // Defaults
             if (!options) var options = {};
             if (options.root == undefined) options.root = '/';
-            if (options.script == undefined) options.script = '/getFiles';
+            if (options.script == undefined) options.script = '/api/getFiles';
             if (options.folderEvent == undefined) options.folderEvent = 'click';
             if (options.loadMessage == undefined) options.loadMessage = 'Loading...';
 

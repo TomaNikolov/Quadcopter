@@ -4,6 +4,7 @@ let fileServer = require('../data/file-server');
 let CONSTANTS = require('../common/constants');
 let path = require('path');
 let fs = require('fs');
+let fileSystem = require('../utils/file-system');
 let FILE_PATH = '../Quadcopter/file-server/';
 
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
         let directoryName = getDirName(req);
         fileServer.getFile(directoryName)
             .then(function (files) {
-                res.json({ success: false, result: files })
+                res.json({ success: true, result: files })
             })
             .catch(function (err) {
                 res.json({ success: false, reason: err })
@@ -63,11 +64,13 @@ module.exports = {
                     result += `<li class="file ext_${fileExtension}"><a href="#" rel="${relativePath}">${file}</a></li>`;
                 }
             });
+
             result += '</ul>';
         } catch (e) {
             result += `Could not load directory: ${dir}`;
             result += '</ul>';
         }
+
         res.send(result)
     },
 
@@ -95,6 +98,32 @@ module.exports = {
 
         res.json({ result: data })
     },
+
+    deleteFile: function (req, res){
+        let fileRelativePath = req.body.file;
+        let storagePath = getStoragePath(req);
+        let filePath = path.normalize(__dirname + storagePath + dir);
+        fileSystem.deleteFile(filePath)
+            .then(function () {
+                res.json({ success: true, result: 'successfully deleted' })
+            })
+            .catch((err) => {
+                res.json({ success: false, result: err })
+            });
+    },
+
+    mkdir: function (req, res){
+        let fileRelativePath = req.body.file;
+        let storagePath = getStoragePath(req);
+        let filePath = path.normalize(__dirname + storagePath + dir);
+        fileSystem.mkdir(path)
+            .then(function () {
+                res.json({ success: true, result: 'successfully created' })
+            })
+            .catch((err) => {
+                res.json({ success: false, result: err })
+            });
+    }, 
 };
 
 function getStoragePath (req) {

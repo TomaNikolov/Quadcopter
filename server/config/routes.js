@@ -16,6 +16,10 @@ module.exports = function (app) {
     app.get('/api/fileserver/downloadAll', controllers.fileServer.downloadAll);
     app.get('/api/fileserver/:fileName', controllers.fileServer.fileDownload);
     app.get('/api/fileserver/', controllers.fileServer.getFiles);
+    app.post('/api/getDirTree', controllers.fileServer.getDirTree);
+    app.post('/api/getFiles', controllers.fileServer.getCurrentDir);
+    app.post('/api/deleteFile', controllers.fileServer.deleteFile);
+    app.post('/api/createDir', controllers.fileServer.mkdir);
 
     //Admin
     app.post('/videos', auth.isAuthenticated, auth.isAdmin, controllers.videos.create);
@@ -33,9 +37,7 @@ module.exports = function (app) {
      
     app.get('/files', controllers.fileServer.getView);
 
-    app.post('/getDirTree', controllers.fileServer.getDirTree);
-    
-    app.post('/getFiles', controllers.fileServer.getCurrentDir);
+  
 
     //app.get('/api/admin', auth.isAuthenticated, auth.isAdmin, controllers.admin.init);
     app.get('/admin', controllers.admin.init);
