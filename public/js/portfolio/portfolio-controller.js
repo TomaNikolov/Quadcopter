@@ -52,12 +52,12 @@
 
         portfolio.getImages()
             .then(function(res){
+                console.log(res);
                 vm.images = res.images
             });
 
         portfolio.getVideos()
             .then(function(res){
-                console.log(res);
                 vm.videos = res.videos;
             })
     }

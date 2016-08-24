@@ -1,43 +1,41 @@
 'use strict';
 
-var videos = require('../data/videos');
+let videos = require('../data/videos');
 
 module.exports = {
     create: function (req, res) {
-        var video = req.body;
+        let video = req.body;
         if (!video.name) {
-            res
-                .status(401)
-                .json({success: false, reason: 'Video name is required'});
-
+            req.session.err = 'Video name is required';
+            res.redirect('/videos')
             return;
         }
 
         videos
             .create(video)
             .then(function (dbVideo) {
-                res.json({
-                    success: true,
-                    video: {
-                        name: dbVideo.name,
-                        id: dbVideo._id
-                    }
-                });
+                res.redirect('/videos')
             })
             .catch(function (err) {
-                res.json({success: false, reason: err});
+                req.session.err = err;
+                res.redirect('/videos')
             });
     },
+
+    getVideo: function (req, res) {
+        res.render('videos/video');
+    },
+
     getAll: function (req, res) {
         videos
             .getAll()
             .then(function (dbVideos) {
                 res
                     .status(200)
-                    .json({success: true, videos: dbVideos});
+                    .json({ success: true, videos: dbVideos });
             })
             .catch(function (err) {
-                res.json({success: false, reason: err})
+                res.json({ success: false, reason: err })
             });
     }
 };

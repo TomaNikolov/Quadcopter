@@ -1,10 +1,10 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var encryption = require('../../utils/encryption');
+let mongoose = require('mongoose');
+let encryption = require('../../utils/encryption');
 
 module.exports.init = function () {
-    var userSchema = mongoose.Schema({
+    let userSchema = mongoose.Schema({
         username: {type: String, required: true, unique: true},
         accessToken: {type: String},
         salt: String,

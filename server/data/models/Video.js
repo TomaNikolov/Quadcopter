@@ -1,9 +1,9 @@
 'use strict';
 
-var mongoose = require('mongoose');
+let mongoose = require('mongoose');
 
 module.exports.init = function () {
-    var videoSchema = mongoose.Schema({
+    let videoSchema = mongoose.Schema({
         name: {type: String, required: true, unique: true}
     });
 

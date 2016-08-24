@@ -1,9 +1,9 @@
 'use strict';
 
-var path = require('path');
+let path = require('path');
 
 module.exports = {
     init: function (req, res) {
-        res.sendFile(path.resolve('views/admin.html'));
+        res.render('index');
     }
 };

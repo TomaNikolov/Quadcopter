@@ -1,0 +1,82 @@
+extends ../shared/layout
+block main-content
+    
+    div.example
+        h1.text-center
+            | files
+        div.row
+            div.col-md-3.jumbotron
+                div#fileTreeDemo_1
+            div.col-md-9
+               div.row
+                  nav.navbar.navbar-default
+                    .container-fluid
+                        .navbar-header
+                            button(type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1" aria-expanded="false")
+                                span(class="sr-only" Toggle navigation)
+                                span(class="icon-bar")
+                                span(class="icon-bar")
+                                span(class="icon-bar")
+                            a.navbar-brand(id="back" class="glyphicon glyphicon-arrow-left")
+                            a.navbar-brand(id="forward" class="glyphicon glyphicon-arrow-right")
+                            a.navbar-brand( class="glyphicon glyphicon-folder-open")
+                            a.navbar-brand(class="glyphicon glyphicon-cloud-upload" data-toggle="modal" data-target="#myModal")
+                        .collapse.navbar-collapse.pull-right#navbar-collapse-1
+                   
+               div#file-view
+               
+      nav(id="context-menu" class="context-menu")
+        ul(class="context-menu__items")
+            li(class="context-menu__item")
+                a(href="#" class="context-menu__link" data-action="View")
+                    i(class="fa fa-eye")
+                    |View Task
+            li(class="context-menu__item")
+                a(href="#" class="context-menu__link" data-action="Edit")
+                    i(class="fa fa-edit")
+                    |Edit Task
+            li(class="context-menu__item")
+                a(href="#" class="context-menu__link" data-action="Delete")
+                    i(class="fa fa-times")
+                    |Delete Task
+    
+    div.row       
+            <!-- Modal -->
+        div(id="myModal" class="modal fade" role="dialog")
+            div(class="modal-dialog")
+                <!-- Modal content-->
+                div(class="modal-content")
+                    div(class="modal-header")
+                        button(type="button" class="close" data-dismiss="modal")
+                            | &times;
+                        h4(class="modal-title")
+                            | File Upload
+                    div(class="modal-body")
+                         span(class="btn btn-success fileinput-button")
+                            i(class="glyphicon glyphicon-plus")
+                            span
+                                | Add files...
+                            input(id="fileupload" type="file" name="files[]" multiple)
+                         br
+                        div(id="progress" class="progress")
+                            div(class="progress-bar progress-bar-success")
+                            <!-- The container for the uploaded files -->
+                        div.container
+                            div(id="files" class="files")
+                            br
+                       
+                    div(class="modal-footer")
+                        button(type="button" class="btn btn-default" data-dismiss="modal")
+                            | Close
+            
+block page-scripts
+    script(type="text/javascript" src="/contents/js/jquery.easing.js")
+    script(type="text/javascript" src="/contents/js/jqueryFileTree.js")
+    script(type="text/javascript" src="/contents/js/file-view.js")
+    script(type="text/javascript" src="/contents/custom/file.js")
+    script(type="text/javascript" src="/contents/custom/contex-menu.js")
+    
+    script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js")
+    script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js")
+    script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/jquery.fileupload-process.js")
+    script(type="text/javascript" src="/contents/custom/file-upload.js")

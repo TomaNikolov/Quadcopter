@@ -1,0 +1,12 @@
+extends ../shared/layout
+block main-content
+    form(method="post" enctype="multipart/form-data")
+        label(for="username") Title
+        input(id="image" type="text" name="title" placeholder="title" class ="form-control")
+        br
+        
+        label(for="username") Upload Image
+        input(id="image" type="file" name="file" placeholder="image" class ="form-control")
+        br
+
+        input(type="submit" value="Submit" class="btn btn-lg")
