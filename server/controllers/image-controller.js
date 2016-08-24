@@ -1,12 +1,12 @@
 'use strict';
 
-var images = require('../data/images');
-var fileUpload = require('../utils/file-upload');
-var dateHelper = require('../utils/date-helper');
+let images = require('../data/images');
+let fileUpload = require('../utils/file-upload');
+let dateHelper = require('../utils/date-helper');
 
 module.exports = {
     create: function (req, res) {
-        var uploadedFile = {};
+        let uploadedFile = {};
 
         req.pipe(req.busboy);
 

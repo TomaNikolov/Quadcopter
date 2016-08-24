@@ -1,11 +1,11 @@
 'use strict';
 
-var express = require('express');
-var bodyParser = require('body-parser');
-var cookieParser = require('cookie-parser');
-var session = require('express-session');
-var busboy = require('connect-busboy');
-var passport = require('passport');
+let express = require('express');
+let bodyParser = require('body-parser');
+let cookieParser = require('cookie-parser');
+let session = require('express-session');
+let busboy = require('connect-busboy');
+let passport = require('passport');
 
 module.exports = function (app, config) {
 
@@ -37,7 +37,7 @@ module.exports = function (app, config) {
 
     // CUSTOM MIDDLEWARE
     app.use(function (req, res, next) {
-        var msg;
+        let msg;
 
         if (req.session.error) {
             msg = req.session.error;

@@ -1,10 +1,10 @@
 'use strict';
 
-var videos = require('../data/videos');
+let videos = require('../data/videos');
 
 module.exports = {
     create: function (req, res) {
-        var video = req.body;
+        let video = req.body;
         if (!video.name) {
             req.session.err = 'Video name is required';
             res.redirect('/videos')

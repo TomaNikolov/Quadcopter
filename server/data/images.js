@@ -1,11 +1,11 @@
 'use strict';
 
-var Image = require('mongoose').model('Image');
-var Promise = require('bluebird');
+let Image = require('mongoose').model('Image');
+let Promise = require('bluebird');
 
 module.exports = {
     create: function (image) {
-        var promise = new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
             Image.create(image, function (err, dbImage) {
                 if (err) {
                     reject(err);
@@ -21,8 +21,9 @@ module.exports = {
 
         return promise;
     },
+    
     getAll: function () {
-        var promise = new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
             Image.find({}, function (err, dbImages) {
                 if (err) {
                     reject(err);

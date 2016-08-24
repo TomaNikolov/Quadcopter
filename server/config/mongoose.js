@@ -1,11 +1,11 @@
 'use strict';
 
-var mongoose = require('mongoose');
-var models = require('../data/models');
+let mongoose = require('mongoose');
+let models = require('../data/models');
 
 module.exports = function (config) {
     mongoose.connect(config.dbConnection);
-    var db = mongoose.connection;
+    let db = mongoose.connection;
 
     db.on('error', function (err) {
         db.on('error', console.error('Connection error ' + err));

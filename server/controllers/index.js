@@ -1,10 +1,10 @@
 'use strict';
 
-var userController = require('./user-controller');
-var videoController = require('./video-controller');
-var adminController = require('./admin-controller');
-var imageController = require('./image-controller');
-var fileServerController = require('./file-server-controller');
+let userController = require('./user-controller');
+let videoController = require('./video-controller');
+let adminController = require('./admin-controller');
+let imageController = require('./image-controller');
+let fileServerController = require('./file-server-controller');
 
 module.exports = {
     users: userController,

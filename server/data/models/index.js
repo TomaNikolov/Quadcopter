@@ -1,8 +1,8 @@
 'use strict';
 
-var User = require('./User');
-var Image = require('./Image');
-var Video = require('./Video');
+let User = require('./User');
+let Image = require('./Image');
+let Video = require('./Video');
 
 module.exports = {
     UserModel: User,

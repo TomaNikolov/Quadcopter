@@ -1,17 +1,17 @@
-'use stric'
+'use strict';
 
-var express = require('express');
+let express = require('express');
 
-var app = express();
-var env = process.env.NODE_ENV || 'development';
-var config = require('./server/config/config')[env];
+let app = express();
+let env = process.env.NODE_ENV || 'development';
+let config = require('./server/config/config')[env];
 
 require('./server/config/express')(app, config);
 require('./server/config/mongoose')(config);
 require('./server/config/passport')();
 require('./server/config/routes')(app);
 
-var server = app.listen(config.port, function () {
+let server = app.listen(config.port, function () {
   console.log('server is running at port ' + config.port);
 });
 

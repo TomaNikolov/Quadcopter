@@ -1,12 +1,12 @@
-var User = require('mongoose').model('User');
-var Promise = require('bluebird');
-var encryption = require('../utils/encryption');
-
 'use strict';
+
+let User = require('mongoose').model('User');
+let Promise = require('bluebird');
+let encryption = require('../utils/encryption');
 
 module.exports = {
     create: function (user) {
-        var promise = new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
 
             if (!user.username) {
                 reject('Username is required')
@@ -40,8 +40,9 @@ module.exports = {
 
         return promise;
     },
+
     findByUserName: function (username) {
-        var promise = new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
             User.findOne({username: username}).exec(function (err, dbUser) {
 
                 if (err) {
@@ -58,8 +59,9 @@ module.exports = {
 
         return promise;
     },
+    
     findByToken: function (token) {
-        var promise = new Promise(function (resolve, reject) {
+        let promise = new Promise(function (resolve, reject) {
             User.findOne({accessToken: token}).exec(function (err, dbUser) {
                 if (err) {
                     reject(err);
@@ -77,7 +79,7 @@ module.exports = {
     },
     
     getAll: function (params) {
-         var promise = new Promise(function (resolve, reject) {
+         let promise = new Promise(function (resolve, reject) {
             User.find(function (err, dbUsers) {
                 if (err) {
                     reject(err);
