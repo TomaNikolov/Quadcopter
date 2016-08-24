@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	$('#fileTreeDemo_1').fileTree({ root: './', script: '/getDirList' }, function (file) {
+	$('#fileTreeDemo_1').fileTree({ root: './', script: '/getDirTree' }, function (file) {
 		console.log(file);
 	}, function (dir) {
 		$('#file-view').fileView({ root: dir, script: '/getFiles' })

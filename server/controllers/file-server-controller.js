@@ -4,15 +4,7 @@ let fileServer = require('../data/file-server');
 let CONSTANTS = require('../common/constants');
 let path = require('path');
 let fs = require('fs');
-
 let FILE_PATH = '../Quadcopter/file-server/';
-
-function getDirName(req) {
-    //  let name = res.user.username
-
-    //just for the test
-    return 'toma';
-}
 
 module.exports = {
     getFiles: function (req, res) {
@@ -20,7 +12,6 @@ module.exports = {
         // dir name is the name of the user
 
         let directoryName = getDirName(req);
-          console.log('@@@@@@@@files:' + (__dirname + STORAGE_PATH + directoryName))
         fileServer.getFile(directoryName)
             .then(function (files) {
                 res.json({ success: false, result: files })
@@ -55,32 +46,29 @@ module.exports = {
         res.render('files/files');
     },
 
-    getDirList: function (req, res) {
+    getDirTree: function (req, res) {
         let dir = req.body.dir;
         let storagePath = getStoragePath(req);
-        let r = '<ul class="jqueryFileTree" style="display: none;">';
+        let result = '<ul class="jqueryFileTree" style="display: none;">';
         try {
-            r = '<ul class="jqueryFileTree" style="display: none;">';
-            console.log('@@@@@@@@dir:' + (__dirname + storagePath + dir))
+            result = '<ul class="jqueryFileTree" style="display: none;">';
             let files = fs.readdirSync(path.normalize(__dirname + storagePath + dir));
-            files.forEach(function (f) {
-                let ff = dir + f;
-                  console.log(f)
-                let stats = fs.statSync(path.normalize(__dirname + storagePath + ff));
+            files.forEach(function (file) {
+                let relativePath = dir + file;
+                let stats = fs.statSync(path.normalize(__dirname + storagePath + relativePath));
                 if (stats.isDirectory()) {
-                    r += '<li class="directory collapsed"><a href="#" rel="' + ff + '/">' + f + '</a></li>';
+                    result += `<li class="directory collapsed"><a href="#" rel="${relativePath}/"> ${file}</a></li>`;
                 } else {
-                    let e = f.split('.')[1];
-                  console.log(e)
-                    r += '<li class="file ext_' + e + '"><a href="#" rel=' + ff + '>' + f + '</a></li>';
+                    let fileExtension = file.split('.')[1];
+                    result += `<li class="file ext_${fileExtension}"><a href="#" rel="${relativePath}">${file}</a></li>`;
                 }
             });
-            r += '</ul>';
+            result += '</ul>';
         } catch (e) {
-            r += 'Could not load directory: ' + dir;
-            r += '</ul>';
+            result += `Could not load directory: ${dir}`;
+            result += '</ul>';
         }
-        res.send(r)
+        res.send(result)
     },
 
     getCurrentDir: function (req, res) {
@@ -88,21 +76,19 @@ module.exports = {
         let data = [];
         let storagePath = getStoragePath(req);
         let files = fs.readdirSync(path.normalize(__dirname + storagePath + dir));
-        console.log(files);
-        files.forEach(function (f) {
-            let ff = dir + f;
+        files.forEach(function (file) {
+            let relativePath = dir + file;
             let currentFile = {};
-            currentFile.name = f
-              let stats = fs.statSync(path.normalize(__dirname + storagePath + ff));
+            let stats = fs.statSync(path.normalize(__dirname + storagePath + relativePath));
+            currentFile.name = file
+            
             if (stats.isDirectory()) {
                 currentFile.type = 'folder';
-            currentFile.path = ff + '/';
-                
+                currentFile.path = relativePath + '/';
             } else {
-                let e = f.split('.')[1];
-                currentFile.type = e;
-            currentFile.path = ff;
-                
+                let fileExtension = file.split('.')[1];
+                currentFile.type = fileExtension;
+                currentFile.path = relativePath;
             }
             data.push(currentFile)
         });
@@ -120,4 +106,11 @@ function getStoragePath (req) {
     // return path to user directory 
     // let name = req.user.name
     // return `${CONSTANTS.STORAGE_PATH}toma/`;
+}
+
+function getDirName(req) {
+    //  let name = res.user.username
+
+    //just for the test
+    return 'toma';
 }

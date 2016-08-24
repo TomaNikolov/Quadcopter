@@ -33,7 +33,7 @@ module.exports = function (app) {
      
     app.get('/files', controllers.fileServer.getView);
 
-    app.post('/getDirList', controllers.fileServer.getDirList);
+    app.post('/getDirTree', controllers.fileServer.getDirTree);
     
     app.post('/getFiles', controllers.fileServer.getCurrentDir);
 
