@@ -20,6 +20,7 @@ module.exports = {
         // dir name is the name of the user
 
         var directoryName = getDirName(req);
+          console.log('@@@@@@@@files:' + (__dirname + STORAGE_PATH + directoryName))
         fileServer.getFile(directoryName)
             .then(function (files) {
                 res.json({ success: false, result: files })
@@ -56,19 +57,21 @@ module.exports = {
 
     getDirList: function (req, res) {
         var dir = req.body.dir;
+        let storagePath = getStoragePath(req);
         var r = '<ul class="jqueryFileTree" style="display: none;">';
         try {
             r = '<ul class="jqueryFileTree" style="display: none;">';
-            var files = fs.readdirSync(path.normalize(__dirname + dir));
+            console.log('@@@@@@@@dir:' + (__dirname + storagePath + dir))
+            var files = fs.readdirSync(path.normalize(__dirname + storagePath + dir));
             files.forEach(function (f) {
                 var ff = dir + f;
-                //  console.log(f)
-                var stats = fs.statSync(path.normalize(__dirname + ff));
+                  console.log(f)
+                var stats = fs.statSync(path.normalize(__dirname + storagePath + ff));
                 if (stats.isDirectory()) {
                     r += '<li class="directory collapsed"><a href="#" rel="' + ff + '/">' + f + '</a></li>';
                 } else {
                     var e = f.split('.')[1];
-                    //  console.log(e)
+                  console.log(e)
                     r += '<li class="file ext_' + e + '"><a href="#" rel=' + ff + '>' + f + '</a></li>';
                 }
             });
@@ -83,14 +86,15 @@ module.exports = {
     getCurrentDir: function (req, res) {
         var dir = req.body.dir;
         var data = [];
-        console.log(dir)
-        var files = fs.readdirSync(path.normalize(__dirname + dir));
+        let storagePath = getStoragePath(req);
+        console.log('!!!!!!!!!!curDir:' +  path.normalize(__dirname + storagePath + dir))
+        var files = fs.readdirSync(path.normalize(__dirname + storagePath + dir));
         console.log(files);
         files.forEach(function (f) {
             var ff = dir + f;
             var currentFile = {};
             currentFile.name = f
-              var stats = fs.statSync(path.normalize(__dirname + ff));
+              var stats = fs.statSync(path.normalize(__dirname + storagePath + ff));
             if (stats.isDirectory()) {
                 currentFile.type = 'folder';
             currentFile.path = ff + '/';
@@ -105,5 +109,16 @@ module.exports = {
         });
 
         res.json({ result: data })
-    }
+    },
 };
+
+function getStoragePath (req) {
+    // if admin return storage path 
+    // if(true){
+    //     return CONSTANTS.STORAGE_PATH 
+    // }
+
+    //return path to user directory 
+    // var name = req.user.name
+    return `${CONSTANTS.STORAGE_PATH}toma/`;
+}

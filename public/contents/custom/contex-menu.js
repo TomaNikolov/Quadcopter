@@ -111,7 +111,6 @@
   function contextListener() {
     document.addEventListener( "contextmenu", function(e) {
       taskItemInContext = clickInsideElement( e, taskItemClassName );
-
       if ( taskItemInContext ) {
         e.preventDefault();
         toggleMenuOn();
@@ -129,7 +128,6 @@
   function clickListener() {
     document.addEventListener( "click", function(e) {
       var clickeElIsLink = clickInsideElement( e, contextMenuLinkClassName );
-      //TODO get path from folder and pass to the menuItemListener
       if ( clickeElIsLink ) {
         e.preventDefault();
         menuItemListener( clickeElIsLink );
@@ -217,7 +215,9 @@
    * @param {HTMLElement} link The link that was clicked
    */
   function menuItemListener( link ) {
+    //TODO get path from taskItemInContext and do the job
     console.log( "Task ID - " + taskItemInContext.getAttribute("data-id") + ", Task action - " + link.getAttribute("data-action"));
+    console.log(taskItemInContext)
     toggleMenuOff();
   }
 

@@ -54,9 +54,6 @@ if (jQuery) (function ($) {
             }
 
             showTree(this, optins.root);
-            consolesslog('aasssssss')
-
-
 
             $('#back').bind('click', function () {
                 var length = navigation.back.length;
@@ -79,9 +76,6 @@ if (jQuery) (function ($) {
                     showTree(that, optins)
                 }
             });
-
-
-
         }
     });
 
