@@ -37,7 +37,7 @@ block main-content
                     | Delete 
     
       div.row       
-            <!-- Modal -->
+            <!-- Modal Create -->
         div(id="folder-name" class="modal fade" role="dialog")
             div(class="modal-dialog")
                 <!-- Modal content-->
@@ -54,6 +54,26 @@ block main-content
                      button(id="create-dir" type="button" class="btn btn-default" data-dismiss="modal")
                             | Ok
                         button(id="cancel-dir" type="button" class="btn btn-default" data-dismiss="modal")
+                            | Cancel
+
+    div.row       
+            <!-- Modal rename-->
+        div(id="rename-modal" class="modal fade" role="dialog")
+            div(class="modal-dialog")
+                <!-- Modal content-->
+                div(class="modal-content")
+                    div(class="modal-header")
+                        button(type="button" class="close" data-dismiss="modal")
+                            | &times;
+                        h4(class="modal-title text-center")
+                            | Rename Folder
+                    div(class="modal-body")
+                    div.form-group.col-md-8
+                        input(class="form-control" id="dir-name" type="text" required)
+                    div(class="modal-footer")
+                     button(id="rename" type="button" class="btn btn-default" data-dismiss="modal")
+                            | Ok
+                        button(id="cancel-rename" type="button" class="btn btn-default" data-dismiss="modal")
                             | Cancel
 
     div.row       
@@ -84,7 +104,9 @@ block main-content
                     div(class="modal-footer")
                         button(type="button" class="btn btn-default" data-dismiss="modal")
                             | Close
-    div(id="current-dir-name" style="display:none")          
+
+    div(id="current-dir-name" style="display:none")   
+
 block page-scripts
     script(type="text/javascript" src="/contents/js/jquery.easing.js")
     script(type="text/javascript" src="/contents/custom/file-explorer/jqueryFileTree.js")

@@ -8,14 +8,16 @@ module.exports = {
 
     },
 
-    delete: function (file) {
+    deleteFile: function (path) {
+        console.log('file: ', path)
         return new Promise ((resolve, reject) => {
-            fs.unlink('/tmp/hello', (err) => {
+            fs.rmdir(path,  (err, _) => {
                 if (err) {
                     reject(err);
+                    return;
                 }
 
-                resolve();
+                resolve(_);
             });
         });
     },
@@ -25,6 +27,7 @@ module.exports = {
             fs.mkdir(path , (err, folder) => {
                 if (err) {
                     reject(err);
+                    return;
                 }
 
                 resolve(folder);
