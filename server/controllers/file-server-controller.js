@@ -113,10 +113,11 @@ module.exports = {
     },
 
     mkdir: function (req, res){
-        let fileRelativePath = req.body.file;
+        let dirName = req.body.dirName;
+        let dirRelativePath = req.body.dirPath;
         let storagePath = getStoragePath(req);
-        let filePath = path.normalize(__dirname + storagePath + dir);
-        fileSystem.mkdir(path)
+        let filePath = path.normalize(__dirname + storagePath + dirRelativePath + dirName);
+        fileSystem.mkdir(filePath)
             .then(function () {
                 res.json({ success: true, result: 'successfully created' })
             })

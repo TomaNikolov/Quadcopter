@@ -19,7 +19,7 @@ block main-content
                                 span(class="icon-bar")
                             a.navbar-brand(id="back" class="glyphicon glyphicon-arrow-left")
                             a.navbar-brand(id="forward" class="glyphicon glyphicon-arrow-right")
-                            a.navbar-brand( class="glyphicon glyphicon-folder-open")
+                            a.navbar-brand(class="glyphicon glyphicon-folder-open" data-toggle="modal" data-target="#folder-name")
                             a.navbar-brand(class="glyphicon glyphicon-cloud-upload" data-toggle="modal" data-target="#myModal")
                         .collapse.navbar-collapse.pull-right#navbar-collapse-1
                    
@@ -28,18 +28,34 @@ block main-content
       nav(id="context-menu" class="context-menu")
         ul(class="context-menu__items")
             li(class="context-menu__item")
-                a(href="#" class="context-menu__link" data-action="View")
-                    i(class="fa fa-eye")
-                    |View Task
-            li(class="context-menu__item")
                 a(href="#" class="context-menu__link" data-action="Edit")
                     i(class="fa fa-edit")
-                    |Edit Task
+                    | Rename 
             li(class="context-menu__item")
                 a(href="#" class="context-menu__link" data-action="Delete")
                     i(class="fa fa-times")
-                    |Delete Task
+                    | Delete 
     
+      div.row       
+            <!-- Modal -->
+        div(id="folder-name" class="modal fade" role="dialog")
+            div(class="modal-dialog")
+                <!-- Modal content-->
+                div(class="modal-content")
+                    div(class="modal-header")
+                        button(type="button" class="close" data-dismiss="modal")
+                            | &times;
+                        h4(class="modal-title text-center")
+                            | Create Folder
+                    div(class="modal-body")
+                    div.form-group.col-md-8
+                        input(class="form-control" id="dir-name" placeholder="Directory Name" required="required" type="text")
+                    div(class="modal-footer")
+                     button(id="create-dir" type="button" class="btn btn-default" data-dismiss="modal")
+                            | Ok
+                        button(id="cancel-dir" type="button" class="btn btn-default" data-dismiss="modal")
+                            | Cancel
+
     div.row       
             <!-- Modal -->
         div(id="myModal" class="modal fade" role="dialog")
@@ -68,15 +84,15 @@ block main-content
                     div(class="modal-footer")
                         button(type="button" class="btn btn-default" data-dismiss="modal")
                             | Close
-            
+    div(id="current-dir-name" style="display:none")          
 block page-scripts
     script(type="text/javascript" src="/contents/js/jquery.easing.js")
-    script(type="text/javascript" src="/contents/js/jqueryFileTree.js")
-    script(type="text/javascript" src="/contents/js/file-view.js")
-    script(type="text/javascript" src="/contents/custom/file.js")
-    script(type="text/javascript" src="/contents/custom/contex-menu.js")
+    script(type="text/javascript" src="/contents/custom/file-explorer/jqueryFileTree.js")
+    script(type="text/javascript" src="/contents/custom/file-explorer/file-view.js")
+    script(type="text/javascript" src="/contents/custom/file-explorer/file-tree.js")
+    script(type="text/javascript" src="/contents/custom/contex-menu/contex-menu.js")
     
     script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js")
     script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js")
     script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/jquery.fileupload-process.js")
-    script(type="text/javascript" src="/contents/custom/file-upload.js")
+    script(type="text/javascript" src="/contents/custom/file-upload/file-upload.js")

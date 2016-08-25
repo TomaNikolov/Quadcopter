@@ -21,14 +21,16 @@ if (jQuery) (function ($) {
 
             var pattern = '<div class="col-md-3 file-container">' +
                 '<a>' +
-                '<div id="type" class="row task"></div>' +
+                '<div id="type" class="files row task"></div>' +
                 '<div id="file-name" class="row file-name"></div>' +
                 '</a>' +
                 '</div>';
 
             function showTree(elementm, path, isFromHistory) {
                 $('.file-container').remove()
-                console.log($(this))
+                //write current dir name in elemen.
+                $('#current-dir-name').attr('rel', path)
+                console.log(path)
                 $.post(options.script, { dir: path }, function (data) {
                     var result = data.result;
                     result.forEach(function (file) {
@@ -61,7 +63,6 @@ if (jQuery) (function ($) {
                     element.bind('click', function () {
                         console.log('in event')
                         var path = $(element).find('#type').attr('rel');
-                        console.log(path);
                         $that.fileView({ root: path, sctipt: options.script })
                     })
                 } else {
@@ -115,6 +116,34 @@ if (jQuery) (function ($) {
                 });
 
                 singletone++;
+            }
+
+           // create dir
+            $('#create-dir').on('click', function () {
+                var dirPath = $('#current-dir-name').attr('rel');
+                var dirName = $('#dir-name').val();
+                createFolder(dirName, dirPath);
+            });
+
+            $('#create-dir').on('click', function () {
+                $('#current-dir-name').val('');
+            });
+
+            function createFolder(dirName, dirPath) {
+                $.post('api/createDir', { dirName: dirName, dirPath: dirPath }, function (data) {
+                        var html = $(pattern);
+                    html
+                        .find('#type')
+                        .attr('rel', dirPath + dirName + '/' )
+                        .addClass('folder');
+
+                    html
+                        .find('#file-name').text(dirName);
+
+                    $that.append(html);
+                    
+                    bindEvents({type: 'folder'}, html);
+                });
             }
         }
     });
