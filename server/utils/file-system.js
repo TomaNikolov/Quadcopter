@@ -21,12 +21,14 @@ module.exports = {
     },
 
     mkdir: function (path) {
-       fs.mkdir(path , (err, folder) => {
-            if (err) {
-                reject(err);
-            }
+        return new Promise ((resolve, reject) => {
+            fs.mkdir(path , (err, folder) => {
+                if (err) {
+                    reject(err);
+                }
 
-            resolve(folder);
+                resolve(folder);
+            });
         });
     }
 };
