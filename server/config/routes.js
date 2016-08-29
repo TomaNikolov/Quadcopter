@@ -20,6 +20,7 @@ module.exports = function (app) {
     app.post('/api/getFiles', controllers.fileServer.getCurrentDir);
     app.post('/api/deleteFile', controllers.fileServer.deleteFile);
     app.post('/api/createDir', controllers.fileServer.mkdir);
+    app.post('/api/upload', controllers.upload.fileUpload);
 
     //Admin
     app.post('/videos', auth.isAuthenticated, auth.isAdmin, controllers.videos.create);

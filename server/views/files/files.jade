@@ -88,11 +88,16 @@ block main-content
                         h4(class="modal-title")
                             | File Upload
                     div(class="modal-body")
-                         span(class="btn btn-success fileinput-button")
+                    form(id="fileupload" action="/api/upload" method="POST" enctype="multipart/form-data")
+                         span(class="col-md-3 btn btn-success fileinput-button")
                             i(class="glyphicon glyphicon-plus")
                             span
                                 | Add files...
                             input(id="fileupload" type="file" name="files[]" multiple)
+                         button(type="submit" class="col-md-3 col-md-offset-1 btn btn-primary start")
+                            i(class="glyphicon glyphicon-upload")
+                            span
+                                | Start upload
                          br
                         div(id="progress" class="progress")
                             div(class="progress-bar progress-bar-success")
@@ -104,6 +109,25 @@ block main-content
                     div(class="modal-footer")
                         button(type="button" class="btn btn-default" data-dismiss="modal")
                             | Close
+
+    div.row       
+            <!-- Modal -->
+        div(id="myModal" class="modal fade" role="dialog")
+            div(class="modal-dialog")
+                <!-- Modal content-->
+                div(class="modal-content")
+                    div(class="modal-header")
+                        button(type="button" class="close" data-dismiss="modal")
+                            | &times;
+                        h4(class="modal-title")
+                            | File Upload
+                    div(class="modal-body")
+                         
+                       
+                    div(class="modal-footer")
+                        button(type="button" class="btn btn-default" data-dismiss="modal")
+                            | Close
+
 
     div(id="current-dir-name" style="display:none")   
 

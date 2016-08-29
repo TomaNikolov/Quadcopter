@@ -11,7 +11,7 @@ module.exports = {
 
     deleteFile: function (path) {
         console.log('file: ', path)
-        return new Promise ((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             rimraf(path,  (err, _) => {
                 if (err) {
                     reject(err);
@@ -24,7 +24,7 @@ module.exports = {
     },
 
     mkdir: function (path) {
-        return new Promise ((resolve, reject) => {
+        return new Promise((resolve, reject) => {
             fs.mkdir(path , (err, folder) => {
                 if (err) {
                     reject(err);

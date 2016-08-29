@@ -1,7 +1,7 @@
 $(function () {
     'use strict';
     // Change this to the location of your server-side upload handler:
-    var url = '/fileUpload',
+    var url = '/api/upload',
         uploadButton = $('<button/>')
             .addClass('btn btn-primary')
             .text('Upload')
