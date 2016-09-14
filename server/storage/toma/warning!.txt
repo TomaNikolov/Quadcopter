@@ -1,0 +1,3 @@
+For a normal installation:
+run install.bat in the top folder of the installation package!
+(if you run the setup.msi, it will only install the .exe and not all the required configuration and ini files)

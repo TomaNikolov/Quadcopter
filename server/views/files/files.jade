@@ -77,38 +77,14 @@ block main-content
                             | Cancel
 
     div.row       
-            <!-- Modal -->
+            <!-- Modal file upload-->
         div(id="myModal" class="modal fade" role="dialog")
             div(class="modal-dialog")
                 <!-- Modal content-->
                 div(class="modal-content")
                     div(class="modal-header")
-                        button(type="button" class="close" data-dismiss="modal")
-                            | &times;
-                        h4(class="modal-title")
-                            | File Upload
-                    div(class="modal-body")
-                    form(id="fileupload" action="/api/upload" method="POST" enctype="multipart/form-data")
-                         span(class="col-md-3 btn btn-success fileinput-button")
-                            i(class="glyphicon glyphicon-plus")
-                            span
-                                | Add files...
-                            input(id="fileupload" type="file" name="files[]" multiple)
-                         button(type="submit" class="col-md-3 col-md-offset-1 btn btn-primary start")
-                            i(class="glyphicon glyphicon-upload")
-                            span
-                                | Start upload
-                         br
-                        div(id="progress" class="progress")
-                            div(class="progress-bar progress-bar-success")
-                            <!-- The container for the uploaded files -->
-                        div.container
-                            div(id="files" class="files")
-                            br
-                       
-                    div(class="modal-footer")
-                        button(type="button" class="btn btn-default" data-dismiss="modal")
-                            | Close
+                        div#fileuploader 
+                            | Upload
 
     div.row       
             <!-- Modal -->
@@ -132,13 +108,12 @@ block main-content
     div(id="current-dir-name" style="display:none")   
 
 block page-scripts
+
+    link(href="contents/css/uploadfile.css" rel="stylesheet")
+    script(src="contents/js/jquery.uploadfile.js")
     script(type="text/javascript" src="/contents/js/jquery.easing.js")
     script(type="text/javascript" src="/contents/custom/file-explorer/jqueryFileTree.js")
     script(type="text/javascript" src="/contents/custom/file-explorer/file-view.js")
     script(type="text/javascript" src="/contents/custom/file-explorer/file-tree.js")
     script(type="text/javascript" src="/contents/custom/contex-menu/contex-menu.js")
-    
-    script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/vendor/jquery.ui.widget.js")
-    script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/jquery.fileupload.js")
-    script(type="text/javascript" src="/bower_components/blueimp-file-upload/js/jquery.fileupload-process.js")
     script(type="text/javascript" src="/contents/custom/file-upload/file-upload.js")

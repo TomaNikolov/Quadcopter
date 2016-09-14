@@ -21,7 +21,7 @@ module.exports = {
         });
 
         req.busboy.on('finish', function() {
-            res.redirect('/upload-results');
+             res.json({ success: true })
         });
     }
 };
