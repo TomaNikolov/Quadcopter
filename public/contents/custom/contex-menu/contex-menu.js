@@ -215,10 +215,39 @@
    * @param {HTMLElement} link The link that was clicked
    */
   function menuItemListener( link ) {
-    //TODO get path from taskItemInContext and do the job
-    console.log( "Task ID - " + taskItemInContext.getAttribute("data-id") + ", Task action - " + link.getAttribute("data-action"));
-    console.log(taskItemInContext)
+    var task = link.getAttribute("data-action");
+
+    switch(task){
+      case 'Delete':
+        deleteItem(taskItemInContext);
+        break;
+      case 'Edit':
+        renameItem(taskItemInContext);
+        break;
+    }
+
     toggleMenuOff();
+  }
+
+  /**
+   * Rename dir.
+   */
+  function renameItem (element){
+      console.log('edit');
+  }
+
+  /**
+   * Delete dir.
+   */
+  function deleteItem (element){
+    var $element = $(element);
+
+    var path = $element.attr('rel');
+     
+    console.log(path);
+     $.post('/api/deleteFile', { name: path }, function (data) {
+        $element.parent().parent().remove();
+      });
   }
 
   /**

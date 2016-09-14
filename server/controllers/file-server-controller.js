@@ -100,9 +100,9 @@ module.exports = {
     },
 
     deleteFile: function (req, res){
-        let fileRelativePath = req.body.file;
+        let fileRelativePath = req.body.name;
         let storagePath = getStoragePath(req);
-        let filePath = path.normalize(__dirname + storagePath + dir);
+        let filePath = path.normalize(__dirname + storagePath + fileRelativePath);
         fileSystem.deleteFile(filePath)
             .then(function () {
                 res.json({ success: true, result: 'successfully deleted' })

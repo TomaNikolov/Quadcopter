@@ -22,6 +22,7 @@
     "mongoose": "~4.1.6",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "random-token": "0.0.8"
+    "random-token": "0.0.8",
+    "rimraf": "^2.5.4"
   }
 }
