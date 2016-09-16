@@ -5,7 +5,6 @@ let controllers = require('../controllers'),
 
 module.exports = function (app) {
     //API
-    
     app.post('/api/login', auth.login);
     app.put('/api/logout', auth.logout);
     app.get('/api/isLoggedin', auth.isAuthenticated, controllers.users.isLoggedin);

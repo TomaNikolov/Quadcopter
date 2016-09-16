@@ -14,12 +14,7 @@ module.exports = {
     getPageData: function (data, pageSize, curentPage) {
         var result = data.slice();
         var add = result.splice((curentPage - 1) * pageSize, pageSize)
-        console.log(curentPage);
-        console.log(pageSize);
-        
-        console.log(add)
         return add;
-
     }
 }
 

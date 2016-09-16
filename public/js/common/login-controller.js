@@ -9,7 +9,6 @@
             };
             
         vm.login = function (){
-            console.log(vm.user);
             loginService.login(vm.user)
             .then(function(resData){
                 console.log(resData);
